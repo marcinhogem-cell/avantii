@@ -46,15 +46,15 @@
 
       --sunset-dark: #c9550a;
 
-      --clean: #ffffff;
+      --clean: #050706;
 
-      --mist: #f4f8f7;
+      --mist: #080d0a;
 
-      --ink: #17211d;
+      --ink: #f6f0dc;
 
-      --muted: #5d6f68;
+      --muted: #c9bfa6;
 
-      --line: #d9e6e2;
+      --line: rgba(244,213,123,.2);
 
       --shadow: 0 18px 44px rgba(8, 72, 95, .16);
 
@@ -74,7 +74,7 @@
 
       color: var(--ink);
 
-      background: var(--clean);
+      background: radial-gradient(circle at top, #101711 0, #050706 42%, #030403 100%);
 
       line-height: 1.5;
 
@@ -371,7 +371,7 @@
 
     .quote-box {
 
-      background: rgba(255,255,255,.97);
+      background: rgba(7,10,8,.96);
 
       color: var(--ink);
 
@@ -381,11 +381,11 @@
 
       box-shadow: var(--shadow);
 
-      border: 1px solid rgba(255,255,255,.55);
+      border: 1px solid rgba(244,213,123,.22);
 
     }
 
-    .quote-box h2 { margin: 0 0 8px; font-size: 24px; color: var(--forest); }
+    .quote-box h2 { margin: 0 0 8px; font-size: 24px; color: #f4d57b; }
 
     .quote-box p { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
 
@@ -405,7 +405,7 @@
 
       color: var(--ink);
 
-      background: #fff;
+      background: #101711;
 
       font: inherit;
 
@@ -438,7 +438,7 @@
 
     }
 
-    .section-head h2 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; color: var(--forest-2); }
+    .section-head h2 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; color: #f6f0dc; }
 
     .section-head p { max-width: 540px; margin: 0; color: var(--muted); font-weight: 650; }
 
@@ -488,7 +488,7 @@
 
       border-radius: 8px;
 
-      background: #fff;
+      background: #0b100d;
 
       overflow: hidden;
 
@@ -530,17 +530,17 @@
 
     .card-body { padding: 18px; }
 
-    .card h3 { margin: 0 0 8px; color: var(--forest); }
+    .card h3 { margin: 0 0 8px; color: #f4d57b; }
 
     .card p { margin: 0 0 16px; color: var(--muted); }
 
-    .card a { color: var(--ocean-deep); font-weight: 900; }
+    .card a { color: #f4d57b; font-weight: 900; }
 
 
 
     .climate {
 
-      background: var(--mist);
+      background: #060907;
 
     }
 
@@ -608,7 +608,7 @@
 
       border-radius: 8px;
 
-      background: #fff;
+      background: #0b100d;
 
     }
 
@@ -616,7 +616,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(13,107,143,.1);
+      background: rgba(244,213,123,.12);
       position: relative;
     }
 
@@ -627,18 +627,18 @@
       top: 6px;
       width: 7px;
       height: 12px;
-      border: solid var(--forest);
+      border: solid #f4d57b;
       border-width: 0 3px 3px 0;
       transform: rotate(45deg);
     }
 
-    .tick b { color: var(--forest); }
+    .tick b { color: #f4d57b; }
 
 
 
     .coverage {
 
-      background: linear-gradient(180deg, #fff, var(--mist));
+      background: linear-gradient(180deg, #050706, #080d0a);
 
     }
 
@@ -658,7 +658,7 @@
 
       border-radius: 8px;
 
-      background: #fff;
+      background: #0b100d;
 
       border: 1px solid var(--line);
 
@@ -666,7 +666,7 @@
 
     }
 
-    .zone h3 { margin: 0 0 8px; color: var(--ocean-deep); }
+    .zone h3 { margin: 0 0 8px; color: #f4d57b; }
 
     .zone p { margin: 0; color: var(--muted); }
 
@@ -688,7 +688,7 @@
 
       border-radius: 8px;
 
-      background: #fff;
+      background: #0b100d;
 
       border: 1px solid var(--line);
 
@@ -764,7 +764,7 @@
 
       color: #d8ebe6;
 
-      background: #0b241b;
+      background: #030403;
 
     }
 
@@ -1014,7 +1014,7 @@
 
           <h2>Orçamento rápido</h2>
 
-          <p>Preencha e fale com a equipe. Carioca é prático: problema enviado, atendimento encaminhado.</p>
+          <p>Preencha e fale com a equipe. Problema enviado, atendimento encaminhado.</p>
 
           <form action="/obrigado/" method="get" data-whatsapp-form>
 
@@ -1210,7 +1210,7 @@
 
             <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Técnico na sua porta em até 2h.</b><br>Orçamento via WhatsApp em 10 minutos e agenda emergencial 24h.</div></div>
 
-            <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Seguro para crianças e pets.</b><br>Aplicação orientada para apartamentos cariocas, sem bagunça e com retorno combinado.</div></div>
+            <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Seguro para crianças e pets.</b><br>Aplicação orientada para apartamentos, sem bagunça e com retorno combinado.</div></div>
 
             <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Garantia escrita.</b><br>3 meses contra baratas e 12 meses contra cupins, conforme avaliação técnica.</div></div>
 
@@ -1264,7 +1264,7 @@
 
         <div class="section-head">
 
-          <h2>Prova social carioca.</h2>
+          <h2>Prova social.</h2>
 
           <p>Depoimentos com bairro e praga resolvida para você saber que a equipe conhece a realidade do Rio.</p>
 
@@ -1334,7 +1334,7 @@
 
         <h3>Avanti Dedetizadora</h3>
 
-        <p>Dedetizadora carioca com atendimento 24h no Rio de Janeiro e Grande Rio.</p>
+        <p>Dedetizadora com atendimento 24h no Rio de Janeiro e Grande Rio.</p>
 
         <p>CNPJ 57.146.489/0001-21</p>
 
@@ -1435,4 +1435,3 @@
 </body>
 
 </html>
-
