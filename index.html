@@ -8,6 +8,12 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.unsplash.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me; frame-src 'none'; upgrade-insecure-requests">
+
   <title>Dedetização no Rio de Janeiro 24h | Orçamento em 10 min</title>
 
   <meta name="description" content="Dedetização, descupinização e desratização no Rio de Janeiro. Atendimento emergencial 24h, técnico em até 2h, produtos seguros para crianças e pets.">
@@ -16,7 +22,7 @@
 
   <meta property="og:title" content="Barata, cupim ou rato no Rio? Resolvemos em 24h">
 
-  <meta property="og:description" content="Empresa carioca de controle de pragas. WhatsApp com orçamento em 10 minutos e garantia escrita.">
+  <meta property="og:description" content="Controle de pragas com WhatsApp, orçamento em 10 minutos e garantia escrita.">
 
   <meta property="og:type" content="website">
 
@@ -72,6 +78,8 @@
 
       line-height: 1.5;
 
+      -webkit-font-smoothing: antialiased;
+
     }
 
     a { color: inherit; text-decoration: none; }
@@ -79,24 +87,6 @@
     img { display: block; max-width: 100%; }
 
     .container { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
-
-
-
-    .top-alert {
-
-      background: var(--sunset);
-
-      color: #fff;
-
-      font-weight: 800;
-
-      text-align: center;
-
-      padding: 10px 14px;
-
-    }
-
-    .top-alert a { text-decoration: underline; text-underline-offset: 3px; }
 
 
 
@@ -108,11 +98,13 @@
 
       z-index: 20;
 
-      background: rgba(255,255,255,.94);
+      background: rgba(3,4,4,.94);
 
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(236, 198, 95, .22);
 
       backdrop-filter: blur(12px);
+
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
 
     }
 
@@ -164,7 +156,12 @@
 
     }
 
-    .site-logo { height: 72px; object-fit: contain; display: block; }
+    .site-logo {
+      width: clamp(250px, 30vw, 420px);
+      max-height: 150px;
+      object-fit: contain;
+      display: block;
+    }
 
     nav {
 
@@ -181,6 +178,12 @@
       font-size: 14px;
 
     }
+
+    nav a { padding: 10px 0; }
+
+    nav a { color: rgba(255,255,255,.76); }
+
+    nav a:hover { color: #f4d57b; }
 
     .btn {
 
@@ -210,7 +213,11 @@
 
       box-shadow: 0 10px 24px rgba(244, 123, 32, .28);
 
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+
     }
+
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 28px rgba(244, 123, 32, .34); }
 
     .btn.secondary {
 
@@ -232,6 +239,16 @@
 
     }
 
+    .btn:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(244, 123, 32, .38);
+      outline-offset: 3px;
+    }
+
 
 
     .hero {
@@ -248,7 +265,7 @@
 
       background:
 
-        linear-gradient(90deg, rgba(10, 38, 30, .94), rgba(8, 72, 95, .78) 55%, rgba(8, 72, 95, .28)),
+        linear-gradient(90deg, rgba(10, 38, 30, .96), rgba(8, 72, 95, .82) 55%, rgba(8, 72, 95, .34)),
 
         url("https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1800&q=78") center/cover;
 
@@ -364,6 +381,8 @@
 
       box-shadow: var(--shadow);
 
+      border: 1px solid rgba(255,255,255,.55);
+
     }
 
     .quote-box h2 { margin: 0 0 8px; font-size: 24px; color: var(--forest); }
@@ -390,6 +409,13 @@
 
       font: inherit;
 
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--ocean);
+      box-shadow: 0 0 0 4px rgba(13, 107, 143, .1);
     }
 
     textarea { min-height: 82px; resize: vertical; }
@@ -422,7 +448,7 @@
 
       padding: 22px 0;
 
-      background: var(--forest);
+      background: linear-gradient(135deg, var(--forest), var(--ocean-deep));
 
       color: #fff;
 
@@ -468,6 +494,16 @@
 
       box-shadow: 0 10px 26px rgba(23, 33, 29, .06);
 
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+
+    }
+
+    .card:hover,
+    .testimonial:hover,
+    .zone:hover {
+      transform: translateY(-2px);
+      border-color: rgba(13,107,143,.32);
+      box-shadow: 0 16px 34px rgba(23, 33, 29, .09);
     }
 
     .card-media {
@@ -576,6 +612,26 @@
 
     }
 
+    .tick-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(13,107,143,.1);
+      position: relative;
+    }
+
+    .tick-icon::after {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 6px;
+      width: 7px;
+      height: 12px;
+      border: solid var(--forest);
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
     .tick b { color: var(--forest); }
 
 
@@ -606,6 +662,8 @@
 
       border: 1px solid var(--line);
 
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+
     }
 
     .zone h3 { margin: 0 0 8px; color: var(--ocean-deep); }
@@ -635,6 +693,8 @@
       border: 1px solid var(--line);
 
       box-shadow: 0 10px 24px rgba(23,33,29,.06);
+
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 
     }
 
@@ -712,7 +772,7 @@
 
       display: grid;
 
-      grid-template-columns: 1.2fr repeat(3, 1fr);
+      grid-template-columns: 1.2fr repeat(4, 1fr);
 
       gap: 22px;
 
@@ -790,100 +850,6 @@
 
 
 
-    .chatbot {
-
-      position: fixed;
-
-      right: 18px;
-
-      bottom: 92px;
-
-      z-index: 29;
-
-      width: min(340px, calc(100% - 36px));
-
-      border-radius: 8px;
-
-      border: 1px solid var(--line);
-
-      background: #fff;
-
-      box-shadow: var(--shadow);
-
-      overflow: hidden;
-
-      display: none;
-
-    }
-
-    .chatbot.open { display: block; }
-
-    .chat-head {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      padding: 12px 14px;
-
-      color: #fff;
-
-      background: var(--forest);
-
-      font-weight: 900;
-
-    }
-
-    .chat-body { padding: 14px; }
-
-    .chat-options { display: grid; gap: 8px; margin-top: 12px; }
-
-    .chat-options a {
-
-      padding: 10px 12px;
-
-      border-radius: 8px;
-
-      border: 1px solid var(--line);
-
-      font-weight: 800;
-
-      color: var(--forest);
-
-    }
-
-    .chat-toggle {
-
-      position: fixed;
-
-      right: 18px;
-
-      bottom: 92px;
-
-      z-index: 28;
-
-      border: 0;
-
-      border-radius: 8px;
-
-      background: var(--forest);
-
-      color: #fff;
-
-      padding: 12px 14px;
-
-      font-weight: 900;
-
-      cursor: pointer;
-
-      box-shadow: var(--shadow);
-
-    }
-
-
-
     @media (max-width: 920px) {
 
       nav { display: none; }
@@ -900,10 +866,6 @@
 
     @media (max-width: 620px) {
 
-      .top-alert { font-size: 13px; }
-
-      .brand span:last-child { display: none; }
-
       .cards { grid-template-columns: 1fr; }
 
       .section-head { display: block; }
@@ -915,8 +877,6 @@
       .float-whatsapp { right: 12px; left: 50%; bottom: 12px; padding: 0 12px; }
 
       .mobile-call { display: inline-flex; left: 12px; right: 52%; bottom: 12px; padding: 0 12px; justify-content: center; }
-
-      .chat-toggle { bottom: 82px; }
 
       footer { padding-bottom: 128px; }
 
@@ -988,17 +948,13 @@
 
 <body>
 
-  <div class="top-alert">Atendimento emergencial 24h no RJ é ligação direta: <a href="tel:+5521999999999">(21) 99999-9999</a></div>
-
-
-
   <header>
 
     <div class="container nav">
 
       <a class="brand" href="/">
 
-        <img src="assets/logo.png" alt="Avanti Dedetizadora" class="site-logo">
+        <img src="assets/logo-single.jpeg" alt="Avanti Dedetizadora" class="site-logo">
 
       </a>
 
@@ -1014,8 +970,6 @@
 
       </nav>
 
-      <a class="btn" href="https://wa.me/5521999999999?text=Ol%C3%A1%2C%20moro%20em%20%5Bbairro%5D%20e%20preciso%20de%20dedetiza%C3%A7%C3%A3o%20para%20%5Bpraga%5D.%20Quando%20voc%C3%AAs%20podem%20vir%3F">WhatsApp agora</a>
-
     </div>
 
   </header>
@@ -1030,9 +984,9 @@
 
         <div>
 
-          <span class="eyebrow">Empresa carioca é técnico em até 2h</span>
+          <span class="eyebrow">Técnico em até 2h</span>
 
-          <h1>Barata, cupim ou rato na sua casa no Rio? Resolvemos em 24h.</h1>
+          <h1>Barata, cupim ou rato na sua casa? Resolvemos em 24h.</h1>
 
           <p>Sem burocracia: orçamento pelo WhatsApp em 10 minutos, produtos seguros para crianças e pets e garantia escrita no contrato.</p>
 
@@ -1045,8 +999,6 @@
           </div>
 
           <div class="badges" aria-label="Selos de confiança">
-
-            <span class="badge">Empresa Carioca</span>
 
             <span class="badge">Zona Sul, Norte e Oeste</span>
 
@@ -1064,9 +1016,11 @@
 
           <p>Preencha e fale com a equipe. Carioca é prático: problema enviado, atendimento encaminhado.</p>
 
-          <form action="/obrigado/" method="get">
+          <form action="/obrigado/" method="get" data-whatsapp-form>
 
-            <input name="bairro" placeholder="Seu bairro no RJ" required>
+            <input name="bairro" placeholder="Seu bairro no RJ" maxlength="80" required>
+
+            <input name="telefone" type="tel" inputmode="tel" placeholder="Seu WhatsApp" autocomplete="tel" maxlength="20" required>
 
             <select name="imovel" required>
 
@@ -1110,7 +1064,7 @@
 
             </select>
 
-            <textarea name="detalhes" placeholder="Conte o que apareceu e onde foi visto"></textarea>
+            <textarea name="detalhes" placeholder="Conte o que apareceu e onde foi visto" maxlength="500"></textarea>
 
             <button class="btn secondary" type="submit">Receber orçamento</button>
 
@@ -1252,13 +1206,13 @@
 
           <div class="ticks">
 
-            <div class="tick"><span>?</span><div><b>Umidade acelera cupins e baratas.</b><br>O clima do Rio favorece ninhos em armários, ralos e áreas fechadas.</div></div>
+            <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Umidade acelera cupins e baratas.</b><br>O clima do Rio favorece ninhos em armários, ralos e áreas fechadas.</div></div>
 
-            <div class="tick"><span>?</span><div><b>Técnico na sua porta em até 2h.</b><br>Orçamento via WhatsApp em 10 minutos e agenda emergencial 24h.</div></div>
+            <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Técnico na sua porta em até 2h.</b><br>Orçamento via WhatsApp em 10 minutos e agenda emergencial 24h.</div></div>
 
-            <div class="tick"><span>?</span><div><b>Seguro para crianças e pets.</b><br>Aplicação orientada para apartamentos cariocas, sem bagunça e com retorno combinado.</div></div>
+            <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Seguro para crianças e pets.</b><br>Aplicação orientada para apartamentos cariocas, sem bagunça e com retorno combinado.</div></div>
 
-            <div class="tick"><span>?</span><div><b>Garantia escrita.</b><br>3 meses contra baratas e 12 meses contra cupins, conforme avaliação técnica.</div></div>
+            <div class="tick"><span class="tick-icon" aria-hidden="true"></span><div><b>Garantia escrita.</b><br>3 meses contra baratas e 12 meses contra cupins, conforme avaliação técnica.</div></div>
 
           </div>
 
@@ -1384,6 +1338,8 @@
 
         <p>CNPJ 57.146.489/0001-21</p>
 
+        <p>E-mail: <a href="mailto:avantidedetizadora@gmail.com">avantidedetizadora@gmail.com</a></p>
+
       </div>
 
       <div>
@@ -1412,6 +1368,16 @@
 
       <div>
 
+        <h4>Redes sociais</h4>
+
+        <a href="https://www.instagram.com/avantidedetizadora/" target="_blank" rel="noopener noreferrer">Instagram</a>
+
+        <a href="https://www.facebook.com/avantidedetizadora" target="_blank" rel="noopener noreferrer">Facebook</a>
+
+      </div>
+
+      <div>
+
         <h4>Contato</h4>
 
         <a href="tel:+5521999999999">(21) 99999-9999</a>
@@ -1428,40 +1394,6 @@
 
 
 
-  <button class="chat-toggle" type="button" aria-controls="chatbot" aria-expanded="false">Qual praga?</button>
-
-  <div class="chatbot" id="chatbot" role="dialog" aria-label="Direcionador de serviço">
-
-    <div class="chat-head">
-
-      <span>Qual praga você está enfrentando?</span>
-
-      <button type="button" data-close-chat aria-label="Fechar" style="background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer">&times;</button>
-
-    </div>
-
-    <div class="chat-body">
-
-      <p>Escolha uma opção e veja o serviço certo para o seu caso.</p>
-
-      <div class="chat-options">
-
-        <a href="/dedetizacao-baratas-rio-de-janeiro/">Baratas em casa</a>
-
-        <a href="/descupinizacao-cupins-rj/">Cupim em móvel ou porta</a>
-
-        <a href="/desratizacao-ratos-zona-sul/">Rato em garagem ou cozinha</a>
-
-        <a href="/dedetizacao-condominios-barra-da-tijuca/">Condomínio ou empresa</a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
   <a class="mobile-call" href="tel:+5521999999999">Ligar</a>
 
   <a class="float-whatsapp" href="https://wa.me/5521999999999?text=Ol%C3%A1%2C%20moro%20em%20%5Bbairro%5D%20e%20preciso%20de%20dedetiza%C3%A7%C3%A3o%20para%20%5Bpraga%5D.%20Quando%20voc%C3%AAs%20podem%20vir%3F">WhatsApp</a>
@@ -1470,27 +1402,33 @@
 
   <script>
 
-    const chat = document.querySelector('#chatbot');
+    const quoteForm = document.querySelector('[data-whatsapp-form]');
 
-    const toggle = document.querySelector('.chat-toggle');
+    if (quoteForm) {
 
-    const close = document.querySelector('[data-close-chat]');
+      quoteForm.addEventListener('submit', (event) => {
 
-    toggle.addEventListener('click', () => {
+        event.preventDefault();
 
-      const open = chat.classList.toggle('open');
+        const data = new FormData(quoteForm);
 
-      toggle.setAttribute('aria-expanded', String(open));
+        const clean = (value, fallback = '') => String(value || fallback).trim().slice(0, 500);
 
-    });
+        const message = [
+          'Olá, quero um orçamento de dedetização.',
+          `Bairro: ${clean(data.get('bairro'))}`,
+          `WhatsApp: ${clean(data.get('telefone'))}`,
+          `Imóvel: ${clean(data.get('imovel'))}`,
+          `Praga: ${clean(data.get('praga'))}`,
+          `Urgência: ${clean(data.get('urgencia'))}`,
+          `Detalhes: ${clean(data.get('detalhes'), 'Não informado')}`
+        ].join('\n');
 
-    close.addEventListener('click', () => {
+        window.location.href = `https://wa.me/5521999999999?text=${encodeURIComponent(message)}`;
 
-      chat.classList.remove('open');
+      });
 
-      toggle.setAttribute('aria-expanded', 'false');
-
-    });
+    }
 
   </script>
 

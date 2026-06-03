@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   deploy:
     permissions:
@@ -15,8 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v4
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: './'
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v4
