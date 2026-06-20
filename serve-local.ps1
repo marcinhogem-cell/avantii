@@ -8,6 +8,11 @@ $listener = New-Object Net.Sockets.TcpListener($ip, $Port)
 $listener.Start()
 Write-Host "Serving $Root at http://127.0.0.1:$Port/"
 
+$rootFull = [IO.Path]::GetFullPath($Root)
+if (-not $rootFull.EndsWith([IO.Path]::DirectorySeparatorChar)) {
+  $rootFull += [IO.Path]::DirectorySeparatorChar
+}
+
 $mime = @{
   ".html" = "text/html; charset=utf-8"
   ".css" = "text/css; charset=utf-8"
@@ -34,11 +39,17 @@ while ($true) {
   $parts = $line.Split(" ")
   $requestPath = if ($parts.Length -gt 1) { [uri]::UnescapeDataString($parts[1].Split("?")[0].TrimStart("/")) } else { "" }
   if ([string]::IsNullOrWhiteSpace($requestPath)) { $requestPath = "index.html" }
-  $localPath = Join-Path $Root $requestPath
-  if (Test-Path $localPath -PathType Container) {
-    $localPath = Join-Path $localPath "index.html"
+  $localPath = [IO.Path]::GetFullPath((Join-Path $rootFull $requestPath))
+  $isInsideRoot = $localPath.StartsWith($rootFull, [StringComparison]::OrdinalIgnoreCase)
+  if ($isInsideRoot -and (Test-Path $localPath -PathType Container)) {
+    $localPath = [IO.Path]::GetFullPath((Join-Path $localPath "index.html"))
+    $isInsideRoot = $localPath.StartsWith($rootFull, [StringComparison]::OrdinalIgnoreCase)
   }
-  if (-not (Test-Path $localPath -PathType Leaf)) {
+  if (-not $isInsideRoot) {
+    $status = "403 Forbidden"
+    $contentType = "text/plain; charset=utf-8"
+    $bytes = [Text.Encoding]::UTF8.GetBytes("403")
+  } elseif (-not (Test-Path $localPath -PathType Leaf)) {
     $status = "404 Not Found"
     $contentType = "text/plain; charset=utf-8"
     $bytes = [Text.Encoding]::UTF8.GetBytes("404")
